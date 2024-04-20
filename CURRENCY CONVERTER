@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public  class CurrencyConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Hardcoded exchange rate (for demonstration)
+        double exchangeRateUSDToJPY = 110.0;
+
+        System.out.print("Enter the base currency (e.g., USD): ");
+        String baseCurrency = scanner.next().toUpperCase();
+
+        System.out.print("Enter the target currency (e.g., JPY): ");
+        String targetCurrency = scanner.next().toUpperCase();
+
+        System.out.print("Enter the amount to convert: ");
+        double amount = scanner.nextDouble();
+
+        // Convert to target currency
+        double convertedAmount;
+        if (baseCurrency.equals("USD") && targetCurrency.equals("JPY")) {
+            convertedAmount = amount * exchangeRateUSDToJPY;
+        } else {
+            System.out.println("Unsupported currency pair.");
+            scanner.close();
+            return;
+        }
+
+        // Display result
+        System.out.printf("%.2f %s = %.2f %s\n", amount, baseCurrency, convertedAmount, targetCurrency);
+
+        scanner.close();
+    }
+}
